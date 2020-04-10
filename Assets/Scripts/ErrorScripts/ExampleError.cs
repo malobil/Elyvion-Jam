@@ -5,7 +5,7 @@ using System.IO;
 
 public class ExampleError : MonoBehaviour,IInteractable
 {
-    public ErrorClass ErrorsToCorrect;
+    public List<ErrorClass> ErrorsToCorrect;
 
     // Start is called before the first frame update
     void Start()
@@ -16,36 +16,99 @@ public class ExampleError : MonoBehaviour,IInteractable
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            CheckFileContent();
-        }
+
     }
 
-    bool CheckFileContent()
+    bool CheckFileContent(ErrorClass ErrorToCheck)
     {
-        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorsToCorrect.FileName))
+        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
         {
-            if (File.ReadAllText(Application.dataPath + "/ERRORS/" + ErrorsToCorrect.FileName) == ErrorsToCorrect.FileContent)
+            if (File.ReadAllText(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName) == ErrorToCheck.FileContent)
             {
                 return true;
             }
         }
-        Debug.Log(Application.dataPath + "/ERRORS/" + ErrorsToCorrect.FileName);
-
         return false;
+    }
+
+    bool CheckFileExist(ErrorClass ErrorToCheck)
+    {
+        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    bool CheckFileDoNotExist(ErrorClass ErrorToCheck)
+    {
+        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    bool CheckFolderExist(ErrorClass ErrorToCheck)
+    {
+        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        {
+           return true;
+        }
+        return false;
+    }
+
+    bool CheckFolderDoNotExist(ErrorClass ErrorToCheck)
+    {
+        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        {
+            return false;
+        }
+        return true;
     }
 
     public virtual void Interact()
     {
-        if(CheckFileContent())
+        if(CheckErrors())
         {
-            Resolved();
+            Debug.Log("Resolved");
         }
         else
         {
-            NotResolved();
+            Debug.Log("ERROR");
         }
+    }
+
+    bool CheckErrors()
+    {
+        foreach(ErrorClass errors in ErrorsToCorrect)
+        {
+            switch(errors.Error)
+            {
+                case ErrorType.FileContent:
+                    if (CheckFileContent(errors)) continue;
+                    else return false;
+
+                case ErrorType.FolderDontExist:
+                    if (CheckFolderDoNotExist(errors)) continue;
+                    else return false;
+
+                case ErrorType.FolderExist:
+                    if (CheckFolderExist(errors)) continue;
+                    else return false;
+
+                case ErrorType.FileExist:
+                    if (CheckFileExist(errors)) continue;
+                    else return false;
+
+                case ErrorType.FileDontExist:
+                    if (CheckFileDoNotExist(errors)) continue;
+                    else return false;
+
+            }
+        }
+
+        return true;
     }
 
     public virtual void Resolved()

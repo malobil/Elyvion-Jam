@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3146894407599452838}
   - component: {fileID: 3146894407599452839}
   - component: {fileID: 3146894407599452832}
-  - component: {fileID: 3146894407599452836}
   - component: {fileID: 3146894407599452843}
+  - component: {fileID: 1596452695}
   m_Layer: 0
   m_Name: PrefabPushableObject
   m_TagString: Untagged
@@ -95,19 +95,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3146894407599452836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3146894407599452833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7d2162970ccbf4e87e949f1f010d63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingRange: 5
 --- !u!54 &3146894407599452843
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1596452695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146894407599452833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbda21b0516f09741bb7fd8fb36f57c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovingRange: 5
+  m_MovingSpeed: 10

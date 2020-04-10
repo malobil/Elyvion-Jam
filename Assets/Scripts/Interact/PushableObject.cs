@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestObjectInteractible : MonoBehaviour, IInteractable
+public class PushableObject : InteractableObject
 {
     [SerializeField] private float m_MovingRange = 2f;
-    enum MyDirection {Front,Back,Left,Right}
+    [SerializeField] private float m_MovingSpeed = 2f;
+    enum MyDirection { Front, Back, Left, Right }
     Rigidbody RBComp;
 
     bool IsPush = false;
     Vector3 PushDirection;
     Vector3 BasePushPosition;
-    
-    public void Interact()
+
+    public override void Interact()
     {
-        if(!IsPush)
+        if (!IsPush)
         {
             switch (GetPushDirection())
             {
@@ -33,7 +34,7 @@ public class TestObjectInteractible : MonoBehaviour, IInteractable
             }
         }
 
-        if(CheckIfCanPush())
+        if (CheckIfCanPush())
         {
             BasePushPosition = transform.position;
             IsPush = true;
@@ -90,24 +91,24 @@ public class TestObjectInteractible : MonoBehaviour, IInteractable
 
     void Push(Vector3 PushDirection)
     {
-        transform.position = Vector3.MoveTowards(transform.position, (BasePushPosition + (PushDirection* m_MovingRange)),1f *Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, (BasePushPosition + (PushDirection * m_MovingRange)), m_MovingSpeed * Time.deltaTime);
 
-        if(transform.position == BasePushPosition + (PushDirection * m_MovingRange))
+        if (transform.position == BasePushPosition + (PushDirection * m_MovingRange))
         {
             IsPush = false;
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void OnEnter()
     {
+        base.OnEnter();
         RBComp = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        if(IsPush)
+        base.OnUpdate();
+        if (IsPush)
         {
             Push(PushDirection);
         }

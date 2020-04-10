@@ -33,6 +33,14 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e2108934-d331-4746-ab3a-47f43f1cd2e2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -72,7 +80,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""e30d50cf-14a1-4712-8f27-ca4c98d16834"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -101,6 +109,17 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0bee98b-759a-4524-81a2-fbf2fd06e5f5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -111,6 +130,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         m_Classic_Control = asset.FindActionMap("Classic_Control", throwIfNotFound: true);
         m_Classic_Control_Movement = m_Classic_Control.FindAction("Movement", throwIfNotFound: true);
         m_Classic_Control_MousePosition = m_Classic_Control.FindAction("MousePosition", throwIfNotFound: true);
+        m_Classic_Control_Interact = m_Classic_Control.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +182,14 @@ public class @CharacterControls : IInputActionCollection, IDisposable
     private IClassic_ControlActions m_Classic_ControlActionsCallbackInterface;
     private readonly InputAction m_Classic_Control_Movement;
     private readonly InputAction m_Classic_Control_MousePosition;
+    private readonly InputAction m_Classic_Control_Interact;
     public struct Classic_ControlActions
     {
         private @CharacterControls m_Wrapper;
         public Classic_ControlActions(@CharacterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Classic_Control_Movement;
         public InputAction @MousePosition => m_Wrapper.m_Classic_Control_MousePosition;
+        public InputAction @Interact => m_Wrapper.m_Classic_Control_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Classic_Control; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -183,6 +205,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 @MousePosition.started -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnMousePosition;
+                @Interact.started -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_Classic_ControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +218,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -201,5 +229,6 @@ public class @CharacterControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

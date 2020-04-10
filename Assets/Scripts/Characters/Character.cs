@@ -7,6 +7,9 @@ public abstract class Character : MonoBehaviour
     [Header("Movements stats")]
     [SerializeField] private float MoveSpeed = 5f;
 
+    [Header("Interaction stats")]
+    [SerializeField] private float InteractRange = 10f;
+
     [Header("Camera")]
     [SerializeField] private Transform CharacterCamera;
     [SerializeField] private float CameraSensitivity = 0.5f;
@@ -33,6 +36,8 @@ public abstract class Character : MonoBehaviour
 
     public virtual void OnEnter()
     {
+        ActionControls = new CharacterControls();
+        ActionControls.Classic_Control.Interact.performed += ctx => Interact();
         ActionControls.Enable();
         RbComponent = GetComponent<Rigidbody>();
     }
@@ -61,5 +66,19 @@ public abstract class Character : MonoBehaviour
         xCameraRotation = Mathf.Clamp(xCameraRotation, -90f, 90f);
 
         CharacterCamera.localRotation = Quaternion.Euler(xCameraRotation, CharacterCamera.localRotation.y, CharacterCamera.localRotation.z);
+    }
+
+    public virtual void Interact()
+    {
+        RaycastHit hit;
+
+        if(Physics.Raycast(CharacterCamera.transform.position,CharacterCamera.transform.forward,out hit,InteractRange))
+        {
+            if(hit.collider.gameObject.GetComponent<IInteractable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<IInteractable>().Interact();
+            }
+            
+        }
     }
 }

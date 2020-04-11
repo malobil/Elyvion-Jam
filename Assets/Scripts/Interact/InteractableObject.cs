@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour, IInteractable
 {
+    public List<Outline> ObjectToOutline;
+    private bool IsOutline = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,30 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
     public virtual void ShowError()
     {
         UIManager.Singleton.ShowErrorText(GetComponent<ExampleError>().LastError);
+    }
+
+    public virtual void ShowOutline()
+    {
+        if(!IsOutline)
+        {
+            foreach(Outline obj in ObjectToOutline)
+            {
+                IsOutline = true;
+                obj.enabled = true ;
+            }
+        }
+    }
+
+    public virtual void HideOutline()
+    {
+        if (IsOutline)
+        {
+            foreach (Outline obj in ObjectToOutline)
+            {
+                obj.enabled = false;
+                IsOutline = false;
+            }
+        }
     }
 
     public virtual void OnEnter()

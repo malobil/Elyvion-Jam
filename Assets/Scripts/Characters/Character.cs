@@ -22,6 +22,9 @@ public abstract class Character : MonoBehaviour
     //Components
     private Rigidbody RbComponent;
 
+    //Interaction
+    private IInteractable LastInteractivedObjectTarget;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,7 @@ public abstract class Character : MonoBehaviour
     {
         Move();
         CameraControl();
+        CheckInteract();
     }
 
     public virtual void Move()
@@ -68,17 +72,40 @@ public abstract class Character : MonoBehaviour
         CharacterCamera.localRotation = Quaternion.Euler(xCameraRotation, CharacterCamera.localRotation.y, CharacterCamera.localRotation.z);
     }
 
+    public virtual void CheckInteract()
+    {
+        RaycastHit hit ;
+        bool Ray = Physics.Raycast(CharacterCamera.transform.position, CharacterCamera.transform.forward, out hit, InteractRange);
+
+        if (Ray)
+        {
+            if (hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
+            {
+                LastInteractivedObjectTarget = hit.collider.gameObject.GetComponentInParent<IInteractable>();
+                LastInteractivedObjectTarget.ShowOutline();
+            }
+            else
+            {
+                if(LastInteractivedObjectTarget != null)
+                {
+                    LastInteractivedObjectTarget.HideOutline();
+                    LastInteractivedObjectTarget = null;
+                }
+            }
+        }
+        else if(!Ray && LastInteractivedObjectTarget != null)
+        {
+            LastInteractivedObjectTarget.HideOutline();
+            LastInteractivedObjectTarget = null;
+        }
+    }
+
+
     public virtual void Interact()
     {
-        RaycastHit hit;
-
-        if(Physics.Raycast(CharacterCamera.transform.position,CharacterCamera.transform.forward,out hit,InteractRange))
+        if(LastInteractivedObjectTarget != null)
         {
-            if(hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
-            {
-                hit.collider.gameObject.GetComponentInParent<IInteractable>().CheckInteract();
-            }
-            
+            LastInteractivedObjectTarget.Interact();
         }
     }
 }

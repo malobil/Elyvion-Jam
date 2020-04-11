@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IInteractable
 {
+    void ShowOutline();
+    void HideOutline();
     void CheckInteract();
     void Interact();
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum ErrorType {FileContent, FileExist, FileDontExist, FolderExist, FolderDontExist}
+public enum ErrorType {FileContent, FileExist, FileDontExist, FolderExist, FolderDontExist, FileExtension}
 
 [Serializable]
 public class ErrorClass
@@ -12,6 +12,6 @@ public class ErrorClass
 
     public string FileName;
 
-    public string FileContent;
-
+    public string FileContent ;
+    public string FileExtension ;
 }

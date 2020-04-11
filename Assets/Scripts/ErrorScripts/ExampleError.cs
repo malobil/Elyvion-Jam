@@ -67,6 +67,24 @@ public class ExampleError : MonoBehaviour,IInteractable
         return true;
     }
 
+    bool CheckFileExtension(ErrorClass ErrorToCheck)
+    {
+        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        {
+            DirectoryInfo infos = new DirectoryInfo(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName);
+            FileInfo[] files = infos.GetFiles();
+
+            foreach(FileInfo f in files)
+            {
+                if(f.Extension == ErrorToCheck.FileExtension)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public virtual void Interact()
     {
         if(CheckErrors())
@@ -103,6 +121,10 @@ public class ExampleError : MonoBehaviour,IInteractable
 
                 case ErrorType.FileDontExist:
                     if (CheckFileDoNotExist(errors)) continue;
+                    else return false;
+
+                case ErrorType.FileExtension:
+                    if (CheckFileExtension(errors)) continue;
                     else return false;
 
             }

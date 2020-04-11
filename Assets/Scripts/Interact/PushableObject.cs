@@ -44,13 +44,16 @@ public class PushableObject : InteractableObject
     bool CheckIfCanPush()
     {
         RaycastHit hit;
-
-        if (!Physics.Raycast(transform.position, PushDirection, out hit, m_MovingRange))
+        Vector3 colliderSize = GetComponentInChildren<Collider>().bounds.size/2 ;
+        Vector3 colliderCenter = GetComponentInChildren<Collider>().bounds.center;
+        bool m_HitDetect = Physics.BoxCast(colliderCenter, colliderSize, PushDirection, out hit, Quaternion.identity, m_MovingRange);
+        
+        if(m_HitDetect)
         {
-            return true;
+            Debug.Log(hit.collider.gameObject);
         }
-
-        return false;
+      
+        return !m_HitDetect;
     }
 
 

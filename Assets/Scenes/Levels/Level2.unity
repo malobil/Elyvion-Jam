@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
-  - ErrorName: Erreur Torches
+  - ErrorName: "Erreur : Lumi\xE8re insuffisante"
     Error: 3
     FileName: Torche_ON
     FileContent: 

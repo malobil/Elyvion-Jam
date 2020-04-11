@@ -8,8 +8,9 @@ public enum ErrorType {FileContent, FileExist, FileDontExist, FolderExist, Folde
 [Serializable]
 public class ErrorClass
 {
-    public ErrorType Error;
+    public string ErrorName = "Default error";
 
+    public ErrorType Error;
     public string FileName;
 
     public string FileContent ;

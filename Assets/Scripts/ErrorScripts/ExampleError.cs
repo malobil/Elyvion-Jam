@@ -9,12 +9,12 @@ public class ExampleError : MonoBehaviour
 
     private string ErrorFolderPath;
 
+    public string LastError { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
         ErrorFolderPath = Directory.GetParent(Application.dataPath) + "/ERRORS/";
-        Debug.Log(Directory.Exists(ErrorFolderPath));
-        Debug.Log(ErrorFolderPath);
     }
 
     // Update is called once per frame
@@ -96,42 +96,59 @@ public class ExampleError : MonoBehaviour
             switch(errors.Error)
             {
                 case ErrorType.FileContent:
-                    if (CheckFileContent(errors)) continue;
-                    else return false;
+                    if (CheckFileContent(errors))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        LastError = errors.ErrorName; 
+                        return false;
+                    }
 
                 case ErrorType.FolderDontExist:
                     if (CheckFolderDoNotExist(errors)) continue;
-                    else return false;
+                    else
+                    {
+                        LastError = errors.ErrorName;
+                        return false;
+                    }
 
                 case ErrorType.FolderExist:
                     if (CheckFolderExist(errors)) continue;
-                    else return false;
+                    else
+                    {
+                        LastError = errors.ErrorName;
+                        return false;
+                    }
 
                 case ErrorType.FileExist:
                     if (CheckFileExist(errors)) continue;
-                    else return false;
+                    else
+                    {
+                        LastError = errors.ErrorName;
+                        return false;
+                    }
 
                 case ErrorType.FileDontExist:
                     if (CheckFileDoNotExist(errors)) continue;
-                    else return false;
+                    else
+                    {
+                        LastError = errors.ErrorName;
+                        return false;
+                    }
 
                 case ErrorType.FileExtension:
                     if (CheckFileExtension(errors)) continue;
-                    else return false;
+                    else
+                    {
+                        LastError = errors.ErrorName;
+                        return false;
+                    }
 
             }
         }
 
         return true;
-    }
-
-    public virtual void Resolved()
-    {
-        Debug.Log("RESOLV");
-    }
-
-    public virtual void NotResolved()
-    {
-        Debug.Log("ERROR");
     }
 }

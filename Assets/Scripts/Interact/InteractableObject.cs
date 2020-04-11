@@ -42,7 +42,7 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
 
     public virtual void ShowError()
     {
-
+        UIManager.Singleton.ShowErrorText(GetComponent<ExampleError>().LastError);
     }
 
     public virtual void OnEnter()

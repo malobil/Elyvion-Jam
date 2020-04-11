@@ -18,8 +18,9 @@ public abstract class FileChecker : MonoBehaviour
 
     public virtual void OnUpdate()
     {
-
+        CheckFileExist();
     }
+
 
     public virtual void FileCreatedDetected()
     {
@@ -49,7 +50,6 @@ public abstract class FileChecker : MonoBehaviour
                 FileCreatedDetected();
             }
         }
-      
     }
 
     // Start is called before the first frame update
@@ -61,6 +61,6 @@ public abstract class FileChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckFileExist();
+        OnUpdate();
     }
 }

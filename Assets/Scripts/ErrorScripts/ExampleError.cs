@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class ExampleError : MonoBehaviour,IInteractable
+public class ExampleError : MonoBehaviour
 {
     public List<ErrorClass> ErrorsToCorrect;
 
@@ -85,19 +85,7 @@ public class ExampleError : MonoBehaviour,IInteractable
         return false;
     }
 
-    public virtual void Interact()
-    {
-        if(CheckErrors())
-        {
-            Debug.Log("Resolved");
-        }
-        else
-        {
-            Debug.Log("ERROR");
-        }
-    }
-
-    bool CheckErrors()
+    public bool CheckErrors()
     {
         foreach(ErrorClass errors in ErrorsToCorrect)
         {

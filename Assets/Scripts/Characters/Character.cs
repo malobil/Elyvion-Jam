@@ -74,9 +74,9 @@ public abstract class Character : MonoBehaviour
 
         if(Physics.Raycast(CharacterCamera.transform.position,CharacterCamera.transform.forward,out hit,InteractRange))
         {
-            if(hit.collider.gameObject.GetComponent<IInteractable>() != null)
+            if(hit.collider.gameObject.GetComponentInParent<IInteractable>() != null)
             {
-                hit.collider.gameObject.GetComponent<IInteractable>().Interact();
+                hit.collider.gameObject.GetComponentInParent<IInteractable>().CheckInteract();
             }
             
         }

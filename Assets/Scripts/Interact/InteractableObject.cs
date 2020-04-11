@@ -16,9 +16,33 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
         OnUpdate();
     }
 
+    public void CheckInteract()
+    {
+        if(!GetComponent<ExampleError>())
+        {
+            Interact();
+            //Do something
+        }
+        else if(GetComponent<ExampleError>() && GetComponent<ExampleError>().CheckErrors())
+        {
+            Interact();
+            // Do something
+        }
+        else if(GetComponent<ExampleError>() && !GetComponent<ExampleError>().CheckErrors())
+        {
+            ShowError();
+            //Error message
+        }
+    }
+
     public virtual void Interact()
     {
-        
+
+    }
+
+    public virtual void ShowError()
+    {
+
     }
 
     public virtual void OnEnter()

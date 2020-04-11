@@ -7,10 +7,14 @@ public class ExampleError : MonoBehaviour
 {
     public List<ErrorClass> ErrorsToCorrect;
 
+    private string ErrorFolderPath;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ErrorFolderPath = Directory.GetParent(Application.dataPath) + "/ERRORS/";
+        Debug.Log(Directory.Exists(ErrorFolderPath));
+        Debug.Log(ErrorFolderPath);
     }
 
     // Update is called once per frame
@@ -21,9 +25,9 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFileContent(ErrorClass ErrorToCheck)
     {
-        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (File.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
-            if (File.ReadAllText(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName) == ErrorToCheck.FileContent)
+            if (File.ReadAllText(ErrorFolderPath + ErrorToCheck.FileName) == ErrorToCheck.FileContent)
             {
                 return true;
             }
@@ -33,7 +37,7 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFileExist(ErrorClass ErrorToCheck)
     {
-        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (File.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
             return true;
         }
@@ -42,7 +46,7 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFileDoNotExist(ErrorClass ErrorToCheck)
     {
-        if (File.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (File.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
             return false;
         }
@@ -51,7 +55,7 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFolderExist(ErrorClass ErrorToCheck)
     {
-        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (Directory.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
            return true;
         }
@@ -60,7 +64,7 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFolderDoNotExist(ErrorClass ErrorToCheck)
     {
-        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (Directory.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
             return false;
         }
@@ -69,9 +73,9 @@ public class ExampleError : MonoBehaviour
 
     bool CheckFileExtension(ErrorClass ErrorToCheck)
     {
-        if (Directory.Exists(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName))
+        if (Directory.Exists(ErrorFolderPath + ErrorToCheck.FileName))
         {
-            DirectoryInfo infos = new DirectoryInfo(Application.dataPath + "/ERRORS/" + ErrorToCheck.FileName);
+            DirectoryInfo infos = new DirectoryInfo(ErrorFolderPath + ErrorToCheck.FileName);
             FileInfo[] files = infos.GetFiles();
 
             foreach(FileInfo f in files)

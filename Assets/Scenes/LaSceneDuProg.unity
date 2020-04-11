@@ -409,9 +409,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
-  - Error: 4
-    FileName: ErreurTestFolder
+  - Error: 5
+    FileName: 
     FileContent: Porte fermee
+    FileExtension: .txt
 --- !u!65 &1360943780
 BoxCollider:
   m_ObjectHideFlags: 0

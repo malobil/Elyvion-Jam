@@ -2722,6 +2722,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1794039312613621581, guid: 204dae033b40c4249b16d082cb92a53b,
+        type: 3}
+      propertyPath: FileName
+      value: Torche_On/Torche_01.fx
+      objectReference: {fileID: 0}
     - target: {fileID: 1145979833429962228, guid: 204dae033b40c4249b16d082cb92a53b,
         type: 3}
       propertyPath: m_Name
@@ -2781,6 +2786,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546494656786165792, guid: 204dae033b40c4249b16d082cb92a53b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204dae033b40c4249b16d082cb92a53b, type: 3}

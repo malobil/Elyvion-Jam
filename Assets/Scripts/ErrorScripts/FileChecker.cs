@@ -6,7 +6,6 @@ using System.IO;
 public abstract class FileChecker : MonoBehaviour
 {
     public string FileName;
-    public string FileContent;
 
     private string ErrorFolderPath;
     private bool FileExist = false;

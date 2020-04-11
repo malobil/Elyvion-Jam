@@ -45,7 +45,7 @@ public class PushableObject : InteractableObject
     {
         RaycastHit hit;
         Vector3 colliderSize = GetComponentInChildren<Collider>().bounds.size/2 ;
-        Vector3 colliderCenter = GetComponentInChildren<Collider>().bounds.center;
+        Vector3 colliderCenter = GetComponentInChildren<Collider>().bounds.center + (Vector3.up*0.5f);
         bool m_HitDetect = Physics.BoxCast(colliderCenter, colliderSize, PushDirection, out hit, Quaternion.identity, m_MovingRange);
         
         if(m_HitDetect)

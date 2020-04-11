@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3775869703589242363}
   - component: {fileID: 1330878364102615312}
   - component: {fileID: 6036557134264525296}
+  - component: {fileID: 3063324469181824617}
   m_Layer: 0
   m_Name: porte1
   m_TagString: Untagged
@@ -94,6 +95,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1706509930907706004, guid: 2104f757ce1d16c47a20e2ed849e473e, type: 3}
+--- !u!64 &3063324469181824617
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652226216760745279}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1706509930907706004, guid: 2104f757ce1d16c47a20e2ed849e473e, type: 3}
 --- !u!1 &6680325440500166071
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +123,7 @@ GameObject:
   - component: {fileID: 6300333134441865310}
   - component: {fileID: 398270325}
   - component: {fileID: 398270324}
+  - component: {fileID: 3596818085385994575}
   m_Layer: 0
   m_Name: prefabWallPorte
   m_TagString: Untagged
@@ -223,6 +239,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5229043d9163d4ca4ae81e0098e191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &3596818085385994575
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680325440500166071}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2912147742577991524, guid: 2104f757ce1d16c47a20e2ed849e473e, type: 3}
 --- !u!1 &7301133955972465491
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +265,7 @@ GameObject:
   - component: {fileID: 2632100415329871933}
   - component: {fileID: 6339926014094468498}
   - component: {fileID: 3121316943379182876}
+  - component: {fileID: 245412238690787451}
   m_Layer: 0
   m_Name: porte2
   m_TagString: Untagged
@@ -304,6 +335,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &3121316943379182876
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301133955972465491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7055552481221144596, guid: 2104f757ce1d16c47a20e2ed849e473e, type: 3}
+--- !u!64 &245412238690787451
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

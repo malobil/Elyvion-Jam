@@ -105,7 +105,7 @@ public abstract class Character : MonoBehaviour
     {
         if(LastInteractivedObjectTarget != null)
         {
-            LastInteractivedObjectTarget.Interact();
+            LastInteractivedObjectTarget.CheckInteract();
         }
     }
 }

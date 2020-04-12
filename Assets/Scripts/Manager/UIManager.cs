@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [Header("Error UI")]
     [SerializeField] private GameObject ErrorUI;
     [SerializeField] private TextMeshProUGUI ErrorText ;
+    [SerializeField] private bool AlwaysShowCursor = false ;
 
     private void Awake()
     {
@@ -62,6 +63,10 @@ public class UIManager : MonoBehaviour
 
     public void HideCursor()
     {
-        Cursor.visible = false;
+        if(!AlwaysShowCursor)
+        {
+            Cursor.visible = false;
+        }
+       
     }
 }

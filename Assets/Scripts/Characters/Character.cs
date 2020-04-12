@@ -84,12 +84,14 @@ public abstract class Character : MonoBehaviour
             {
                 LastInteractivedObjectTarget = hit.collider.gameObject.GetComponentInParent<IInteractable>();
                 LastInteractivedObjectTarget.ShowOutline();
+                UIManager.Singleton.ShowInteractIndication();
             }
             else
             {
                 if(LastInteractivedObjectTarget != null)
                 {
                     LastInteractivedObjectTarget.HideOutline();
+                    UIManager.Singleton.HideInteractIndication();
                     LastInteractivedObjectTarget = null;
                 }
             }
@@ -97,6 +99,7 @@ public abstract class Character : MonoBehaviour
         else if(!Ray && LastInteractivedObjectTarget != null)
         {
             LastInteractivedObjectTarget.HideOutline();
+            UIManager.Singleton.HideInteractIndication();
             LastInteractivedObjectTarget = null;
         }
     }

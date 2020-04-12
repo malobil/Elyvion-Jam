@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ErrorText ;
     [SerializeField] private bool AlwaysShowCursor = false ;
 
+    [Header("Interact UI")]
+    [SerializeField] private GameObject InteractUI ;
+
     private void Awake()
     {
         if(Singleton == null)
@@ -68,6 +71,15 @@ public class UIManager : MonoBehaviour
         {
             Cursor.visible = false;
         }
-       
+    }
+
+    public void ShowInteractIndication()
+    {
+        InteractUI.SetActive(true);
+    }
+
+    public void HideInteractIndication()
+    {
+        InteractUI.SetActive(false);
     }
 }

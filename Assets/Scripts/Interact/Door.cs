@@ -16,12 +16,10 @@ public class Door : InteractableObject
     {
         base.Interact();
         AnimComp.SetTrigger("Open");
-        Debug.Log("OPEN");
     }
 
     public override void ShowError()
     {
         base.ShowError();
-        Debug.Log("ERROR");
     }
 }

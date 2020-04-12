@@ -43,6 +43,7 @@ public abstract class Character : MonoBehaviour
         ActionControls.Classic_Control.Interact.performed += ctx => Interact();
         ActionControls.Enable();
         RbComponent = GetComponent<Rigidbody>();
+        UIManager.Singleton.HideCursor();
     }
 
     public virtual void OnUpdate()

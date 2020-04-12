@@ -45,11 +45,23 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         ErrorUI.SetActive(true);
+        ShowCursor();
     }
 
     public void HideErrorUI()
     {
         Time.timeScale = 1f;
         ErrorUI.SetActive(false);
+        HideCursor();
+    }
+
+    public void ShowCursor()
+    {
+        Cursor.visible = true;
+    }
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
     }
 }

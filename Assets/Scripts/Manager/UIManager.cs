@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         ErrorUI.SetActive(true);
+        AudioManager.Singleton.PlayErrorSound();
         ShowCursor();
     }
 

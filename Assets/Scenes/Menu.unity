@@ -6438,7 +6438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
-  - ErrorName: 'Erreur : Supprimer le dossier "Lancement"'
+  - ErrorName: 'Erreur : Supprimer le dossier "Peut pas jouer"'
     Error: 4
     FileName: Peut pas jouer
     FileContent: 

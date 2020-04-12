@@ -7,7 +7,7 @@ public abstract class FileChecker : MonoBehaviour
 {
     public string FileName;
 
-    private string ErrorFolderPath;
+    protected string ErrorFolderPath;
     private bool FileExist = false;
 
     public virtual void OnEnter()

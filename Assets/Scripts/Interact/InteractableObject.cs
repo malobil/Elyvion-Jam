@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class InteractableObject : MonoBehaviour, IInteractable
 {
     public List<Outline> ObjectToOutline;
+    public AudioSource AudioComp;
+    public AudioClip InteractSound;
     private bool IsOutline = false;
 
     // Start is called before the first frame update
@@ -40,7 +42,8 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
-
+        if(AudioComp != null)
+        AudioComp.PlayOneShot(InteractSound);
     }
 
     public virtual void ShowError()
@@ -74,7 +77,7 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
 
     public virtual void OnEnter()
     {
-
+        AudioComp = GetComponent<AudioSource>();
     }
 
     public virtual void OnUpdate()

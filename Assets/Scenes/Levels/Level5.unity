@@ -592,6 +592,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1347507616, guid: 72cc3e3ea6904474da9330392d94b900, type: 3}
+      propertyPath: FileName
+      value: Peintures/tableau04.JPG
+      objectReference: {fileID: 0}
     - target: {fileID: 598890854350062895, guid: 72cc3e3ea6904474da9330392d94b900,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1963,6 +1967,7 @@ MonoBehaviour:
     FileName: Fonctionnement_Porte/Porte.txt
     FileContent: ouverte
     FileExtension: 
+  IndicationSound: {fileID: 0}
 --- !u!1001 &1015369256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2204,6 +2209,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1347507616, guid: 72cc3e3ea6904474da9330392d94b900, type: 3}
+      propertyPath: FileName
+      value: Peintures/tableau03.JPG
+      objectReference: {fileID: 0}
     - target: {fileID: 598890854350062895, guid: 72cc3e3ea6904474da9330392d94b900,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3997,6 +4006,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1347507616, guid: 72cc3e3ea6904474da9330392d94b900, type: 3}
+      propertyPath: FileName
+      value: Peintures/tableau02.JPG
+      objectReference: {fileID: 0}
     - target: {fileID: 598890854350062895, guid: 72cc3e3ea6904474da9330392d94b900,
         type: 3}
       propertyPath: m_LocalPosition.x

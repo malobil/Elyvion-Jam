@@ -30361,10 +30361,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
-  - ErrorName: "Erreur : Porte Ferm\xE9e"
+  - ErrorName: 'Erreur : Image manquante'
     Error: 0
-    FileName: Fonctionnement_Porte/Porte.txt
-    FileContent: ouverte
+    FileName: Peintures/tableau_04.jpg
+    FileContent: 
+    FileExtension: 
+  - ErrorName: 'Erreur : Image manquante'
+    Error: 0
+    FileName: Peintures/tableau_03.jpg
+    FileContent: 
+    FileExtension: 
+  - ErrorName: 'Erreur : Image manquante'
+    Error: 0
+    FileName: Peintures/tableau_02.jpg
+    FileContent: 
+    FileExtension: 
+  - ErrorName: 'Erreur : Image manquante'
+    Error: 0
+    FileName: Peintures/tableau_01.jpg
+    FileContent: 
     FileExtension: 
   IndicationSound: {fileID: 8300000, guid: d208f96e60e71904ab33461b8f06379d, type: 3}
 --- !u!1001 &1004504081

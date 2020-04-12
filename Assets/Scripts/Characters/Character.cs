@@ -149,4 +149,9 @@ public abstract class Character : MonoBehaviour
     {
         CanMove = false;
     }
+
+    private void OnDisable()
+    {
+        ActionControls.Disable();
+    }
 }

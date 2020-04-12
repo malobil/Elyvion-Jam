@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 1f;
     }
 
     public void ShowErrorText(string ErrorName)

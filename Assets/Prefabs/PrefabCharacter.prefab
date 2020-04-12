@@ -597,7 +597,7 @@ MonoBehaviour:
   MoveSpeed: 5
   InteractRange: 1.5
   CharacterCamera: {fileID: 1880547399}
-  CameraSensitivity: 25
+  CameraSensitivity: 8
 --- !u!95 &2991758562582419491
 Animator:
   serializedVersion: 3

@@ -2234,6 +2234,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefabCadre
       objectReference: {fileID: 0}
+    - target: {fileID: 7405171807401627086, guid: 72cc3e3ea6904474da9330392d94b900,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 40df1dde297c18f49be33ee3ad242374, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72cc3e3ea6904474da9330392d94b900, type: 3}
 --- !u!1001 &6757017934378831044

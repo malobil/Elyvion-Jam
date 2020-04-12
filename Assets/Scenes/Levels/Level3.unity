@@ -5719,17 +5719,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
-  - ErrorName: 'Erreur : Mauvais son'
+  - ErrorName: "Erreur : Mauvaise m\xE9lodie"
     Error: 0
     FileName: Steles/Stele_01.txt
     FileContent: Son 3
     FileExtension: 
-  - ErrorName: "Erreur : Une St\xE8le ne fonctionne plus"
+  - ErrorName: "Erreur : Mauvaise m\xE9lodie"
     Error: 0
     FileName: Steles/Stele_02.txt
     FileContent: Son 1
     FileExtension: 
-  - ErrorName: "Erreur : Une St\xE8le ne fonctionne plus"
+  - ErrorName: "Erreur : Mauvaise m\xE9lodie"
     Error: 0
     FileName: Steles/Stele_03.txt
     FileContent: Son 2
@@ -9414,6 +9414,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2123924569}
     m_Modifications:
+    - target: {fileID: 398270324, guid: f44a8ac472057ee4abee7b36be015be8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6680325440500166071, guid: f44a8ac472057ee4abee7b36be015be8,
         type: 3}
       propertyPath: m_Name
@@ -9474,7 +9478,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 398270324, guid: f44a8ac472057ee4abee7b36be015be8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f44a8ac472057ee4abee7b36be015be8, type: 3}
 --- !u!4 &1704986433 stripped
 Transform:

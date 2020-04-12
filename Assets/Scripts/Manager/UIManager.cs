@@ -36,6 +36,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
     public void ShowErrorText(string ErrorName)
     {
         ErrorText.text = ErrorName;

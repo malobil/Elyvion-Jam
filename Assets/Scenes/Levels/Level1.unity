@@ -16937,7 +16937,7 @@ PrefabInstance:
     - target: {fileID: 8507290491931202495, guid: 496e6f57340f7d84ea6242da9f21dee3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.01
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 8507290491931202495, guid: 496e6f57340f7d84ea6242da9f21dee3,
         type: 3}
@@ -16947,7 +16947,7 @@ PrefabInstance:
     - target: {fileID: 8507290491931202495, guid: 496e6f57340f7d84ea6242da9f21dee3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.47
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 8507290491931202495, guid: 496e6f57340f7d84ea6242da9f21dee3,
         type: 3}
@@ -30362,22 +30362,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ErrorsToCorrect:
   - ErrorName: 'Erreur : Image manquante'
-    Error: 0
+    Error: 1
     FileName: Peintures/tableau04.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
-    Error: 0
+    Error: 1
     FileName: Peintures/tableau03.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
-    Error: 0
+    Error: 1
     FileName: Peintures/tableau02.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
-    Error: 0
+    Error: 1
     FileName: Peintures/tableau01.jpg
     FileContent: 
     FileExtension: 

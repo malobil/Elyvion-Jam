@@ -54,7 +54,12 @@ public class UIManager : MonoBehaviour
         ErrorUI.SetActive(true);
         AudioManager.Singleton.PlayErrorSound();
         ShowCursor();
-        Character.Singleton.DisableMove();
+
+        if(Character.Singleton != null)
+        {
+            Character.Singleton.DisableMove();
+        }
+       
     }
 
     public void HideErrorUI()
@@ -62,7 +67,10 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         ErrorUI.SetActive(false);
         HideCursor();
-        Character.Singleton.AuthorizeMove();
+        if (Character.Singleton != null)
+        {
+            Character.Singleton.AuthorizeMove();
+        }
     }
 
     public void ShowCursor()

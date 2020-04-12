@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    public static Character Singleton { get; private set; }
+
     [Header("Movements stats")]
     [SerializeField] private float MoveSpeed = 5f;
 
@@ -25,6 +27,20 @@ public abstract class Character : MonoBehaviour
     //Interaction
     private IInteractable LastInteractivedObjectTarget;
 
+    private bool CanMove = true;
+
+    private void Awake()
+    {
+       if(Singleton == null)
+        {
+            Singleton = this;
+        }
+       else
+        {
+            Destroy(this);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +57,7 @@ public abstract class Character : MonoBehaviour
     {
         ActionControls = new CharacterControls();
         ActionControls.Classic_Control.Interact.performed += ctx => Interact();
+        ActionControls.Classic_Control.Pause.performed += ctx => Pause();
         ActionControls.Enable();
         RbComponent = GetComponent<Rigidbody>();
         UIManager.Singleton.HideCursor();
@@ -75,6 +92,11 @@ public abstract class Character : MonoBehaviour
 
     public virtual void CheckInteract()
     {
+        if(!CanMove)
+        {
+            return;
+        }
+
         RaycastHit hit ;
         bool Ray = Physics.Raycast(CharacterCamera.transform.position, CharacterCamera.transform.forward, out hit, InteractRange);
 
@@ -107,9 +129,24 @@ public abstract class Character : MonoBehaviour
 
     public virtual void Interact()
     {
-        if(LastInteractivedObjectTarget != null)
+        if(LastInteractivedObjectTarget != null && CanMove)
         {
             LastInteractivedObjectTarget.CheckInteract();
         }
+    }
+
+    public virtual void Pause()
+    {
+        UIManager.Singleton.TogglePauseMenu();
+    }
+
+    public void AuthorizeMove()
+    {
+        CanMove = true ;
+    }
+
+    public void DisableMove()
+    {
+        CanMove = false;
     }
 }

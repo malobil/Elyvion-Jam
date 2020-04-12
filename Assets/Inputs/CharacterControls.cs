@@ -41,6 +41,14 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""45570015-36aa-412d-b6ad-ec06bb6e78d9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""004f76ed-9cf0-409a-a4f5-fc22d65a5bbd"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         m_Classic_Control_Movement = m_Classic_Control.FindAction("Movement", throwIfNotFound: true);
         m_Classic_Control_MousePosition = m_Classic_Control.FindAction("MousePosition", throwIfNotFound: true);
         m_Classic_Control_Interact = m_Classic_Control.FindAction("Interact", throwIfNotFound: true);
+        m_Classic_Control_Pause = m_Classic_Control.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Classic_Control_Movement;
     private readonly InputAction m_Classic_Control_MousePosition;
     private readonly InputAction m_Classic_Control_Interact;
+    private readonly InputAction m_Classic_Control_Pause;
     public struct Classic_ControlActions
     {
         private @CharacterControls m_Wrapper;
@@ -190,6 +211,7 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Classic_Control_Movement;
         public InputAction @MousePosition => m_Wrapper.m_Classic_Control_MousePosition;
         public InputAction @Interact => m_Wrapper.m_Classic_Control_Interact;
+        public InputAction @Pause => m_Wrapper.m_Classic_Control_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Classic_Control; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnInteract;
+                @Pause.started -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_Classic_ControlActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_Classic_ControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @CharacterControls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @CharacterControls : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

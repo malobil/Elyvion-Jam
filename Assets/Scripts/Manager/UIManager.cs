@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Singleton { get; private set; }
+
+    public string MenuSceneName;
 
     [Header("Error UI")]
     [SerializeField] private GameObject ErrorUI;
@@ -14,6 +17,12 @@ public class UIManager : MonoBehaviour
 
     [Header("Interact UI")]
     [SerializeField] private GameObject InteractUI ;
+
+    [Header("End UI")]
+    [SerializeField] private GameObject EndUI;
+
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject PauseUI ;
 
     private void Awake()
     {
@@ -25,18 +34,6 @@ public class UIManager : MonoBehaviour
         {
             Destroy(this);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void ShowErrorText(string ErrorName)
@@ -51,6 +48,7 @@ public class UIManager : MonoBehaviour
         ErrorUI.SetActive(true);
         AudioManager.Singleton.PlayErrorSound();
         ShowCursor();
+        Character.Singleton.DisableMove();
     }
 
     public void HideErrorUI()
@@ -58,6 +56,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         ErrorUI.SetActive(false);
         HideCursor();
+        Character.Singleton.AuthorizeMove();
     }
 
     public void ShowCursor()
@@ -81,5 +80,46 @@ public class UIManager : MonoBehaviour
     public void HideInteractIndication()
     {
         InteractUI.SetActive(false);
+    }
+
+    public void ShowEnd()
+    {
+        ShowCursor();
+        EndUI.SetActive(true);
+        Time.timeScale = 0;
+        Character.Singleton.DisableMove();
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(MenuSceneName);
+    }
+
+    public void TogglePauseMenu()
+    {
+        if(PauseUI.activeSelf)
+        {
+            HidePauseMenu();
+        }
+        else
+        {
+            ShowPauseMenu();
+        }
+    }
+
+    public void ShowPauseMenu()
+    {
+        ShowCursor();
+        PauseUI.SetActive(true);
+        Time.timeScale = 0;
+        Character.Singleton.DisableMove();
+    }
+
+    public void HidePauseMenu()
+    {
+        HideCursor();
+        PauseUI.SetActive(false);
+        Time.timeScale = 1;
+        Character.Singleton.AuthorizeMove();
     }
 }

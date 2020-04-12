@@ -14,36 +14,46 @@ public class LevierMusique : InteractableObject
     private string ErrorFolderPath;
 
     private List<AudioClip> SoundsToPlay = new List<AudioClip>();
+    private Animator AnimComp;
+    private bool IsUsed = false;
 
     public override void OnEnter()
     {
         ErrorFolderPath = Directory.GetParent(Application.dataPath) + "/ERRORS/";
+        AnimComp = GetComponent<Animator>();
     }
 
     public override void Interact()
     {
         base.Interact();
-        StopCoroutine(WaitSoundToEnd());
-        SoundsToPlay.Clear();
-        for(int i = 0; i< FilesNames.Count; i++)
+
+        if(!IsUsed)
         {
-            if(File.Exists(ErrorFolderPath + FilesNames[i]))
+            StopCoroutine(WaitSoundToEnd());
+            SoundsToPlay.Clear();
+            for (int i = 0; i < FilesNames.Count; i++)
             {
-                for(int y = 0; y < ContentAndSound.Count; y++)
+                if (File.Exists(ErrorFolderPath + FilesNames[i]))
                 {
-                    if(File.ReadAllText(ErrorFolderPath + FilesNames[i]) == ContentAndSound[y].FileContent)
+                    for (int y = 0; y < ContentAndSound.Count; y++)
                     {
-                        SoundsToPlay.Add(ContentAndSound[y].AssociateSound);
+                        if (File.ReadAllText(ErrorFolderPath + FilesNames[i]) == ContentAndSound[y].FileContent)
+                        {
+                            SoundsToPlay.Add(ContentAndSound[y].AssociateSound);
+                        }
                     }
                 }
+                else
+                {
+                    SoundsToPlay.Add(null);
+                }
             }
-            else
-            {
-                SoundsToPlay.Add(null);
-            }
-        }
 
-        StartCoroutine(WaitSoundToEnd());
+            AnimComp.SetTrigger("Use");
+            StartCoroutine(WaitSoundToEnd());
+            IsUsed = true;
+        }
+        
     }
 
     IEnumerator WaitSoundToEnd()
@@ -56,6 +66,8 @@ public class LevierMusique : InteractableObject
             yield return new WaitWhile(() => SteleAudioComp[i].isPlaying);
             SteleLight[i].SetActive(false);
         }
+
+        IsUsed = false;
        
     }
 }

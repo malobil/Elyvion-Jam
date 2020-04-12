@@ -6,7 +6,9 @@ using System.IO;
 public class ExampleError : MonoBehaviour
 {
     public List<ErrorClass> ErrorsToCorrect;
+    public AudioClip IndicationSound;
 
+    private bool HadPlayIndicationSound = false;
     private string ErrorFolderPath;
 
     public string LastError { get; private set; }
@@ -102,7 +104,8 @@ public class ExampleError : MonoBehaviour
                     }
                     else
                     {
-                        LastError = errors.ErrorName; 
+                        LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -111,6 +114,7 @@ public class ExampleError : MonoBehaviour
                     else
                     {
                         LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -119,6 +123,7 @@ public class ExampleError : MonoBehaviour
                     else
                     {
                         LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -127,6 +132,7 @@ public class ExampleError : MonoBehaviour
                     else
                     {
                         LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -135,6 +141,7 @@ public class ExampleError : MonoBehaviour
                     else
                     {
                         LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -143,6 +150,7 @@ public class ExampleError : MonoBehaviour
                     else
                     {
                         LastError = errors.ErrorName;
+                        PlayIndicationSound();
                         return false;
                     }
 
@@ -150,5 +158,15 @@ public class ExampleError : MonoBehaviour
         }
 
         return true;
+    }
+
+    void PlayIndicationSound()
+    {
+        if (!HadPlayIndicationSound && IndicationSound != null)
+        {
+            AudioManager.Singleton.PlayAVoice(IndicationSound);
+            HadPlayIndicationSound = true;
+        }
+
     }
 }

@@ -2178,6 +2178,7 @@ MonoBehaviour:
     FileName: "Erreur_01/Incapacit\xE9 de pousser.txt"
     FileContent: 
     FileExtension: 
+  IndicationSound: {fileID: 8300000, guid: 9af769266faefb0429d1a5164b7f85ee, type: 3}
 --- !u!4 &519652228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7624319414033107657, guid: a9be58802ccf8564cbdf632ed4193953,

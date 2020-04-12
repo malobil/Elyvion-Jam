@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Singleton { get; private set; }
 
     [SerializeField] private AudioSource AudioComp;
+    [SerializeField] private AudioSource AudioCompVoice;
     [SerializeField] private AudioClip AudioError ;
     
 
@@ -25,6 +26,12 @@ public class AudioManager : MonoBehaviour
     public void PlayASound(AudioClip SoundToPlay)
     {
         AudioComp.PlayOneShot(SoundToPlay);
+    }
+
+    public void PlayAVoice(AudioClip SoundToPlay)
+    {
+        AudioCompVoice.Stop();
+        AudioCompVoice.PlayOneShot(SoundToPlay);
     }
 
     public void PlayErrorSound()

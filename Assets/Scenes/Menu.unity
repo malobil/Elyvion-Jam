@@ -6443,6 +6443,7 @@ MonoBehaviour:
     FileName: Peut pas jouer
     FileContent: 
     FileExtension: 
+  IndicationSound: {fileID: 0}
 --- !u!114 &1178242291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6555,6 +6556,7 @@ MonoBehaviour:
   ErrorUI: {fileID: 2120144162}
   ErrorText: {fileID: 1170273517}
   AlwaysShowCursor: 1
+  InteractUI: {fileID: 0}
 --- !u!1001 &1193737312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12249,6 +12251,11 @@ PrefabInstance:
     - target: {fileID: 3131005966000280031, guid: 076b36c73f520c0438e32f7352caf2e1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929603504022920790, guid: 076b36c73f520c0438e32f7352caf2e1,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

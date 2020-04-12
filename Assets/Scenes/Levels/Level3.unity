@@ -6005,7 +6005,7 @@ MonoBehaviour:
     FileName: Steles/Stele_03.txt
     FileContent: Son 2
     FileExtension: 
-  IndicationSound: {fileID: 0}
+  IndicationSound: {fileID: 8300000, guid: 6ee1e547ca8465943944f880845504f3, type: 3}
 --- !u!1001 &1011264819
 PrefabInstance:
   m_ObjectHideFlags: 0

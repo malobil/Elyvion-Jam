@@ -5351,7 +5351,7 @@ MonoBehaviour:
     FileName: Fonctionnement_Porte/Porte.txt
     FileContent: ouverte
     FileExtension: 
-  IndicationSound: {fileID: 0}
+  IndicationSound: {fileID: 8300000, guid: c4357490a180e9a4fbbc93f04b928b43, type: 3}
 --- !u!1001 &1004504081
 PrefabInstance:
   m_ObjectHideFlags: 0

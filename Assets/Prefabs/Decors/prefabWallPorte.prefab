@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 6593587697263944214}
   AudioComp: {fileID: 4728273573940150793}
   InteractSound: {fileID: 8300000, guid: 246a0770aecb16a46ad8d5aa15192bfd, type: 3}
+  PlaySoundOnce: 1
 --- !u!64 &3596818085385994575
 MeshCollider:
   m_ObjectHideFlags: 0

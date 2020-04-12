@@ -7,6 +7,8 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
     public List<Outline> ObjectToOutline;
     public AudioSource AudioComp;
     public AudioClip InteractSound;
+    public bool PlaySoundOnce = false;
+    private bool HadPlayedSound = false;
     private bool IsOutline = false;
 
     // Start is called before the first frame update
@@ -42,8 +44,16 @@ public abstract class InteractableObject : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
-        if(AudioComp != null)
-        AudioComp.PlayOneShot(InteractSound);
+        if(AudioComp != null && !HadPlayedSound)
+        {
+            AudioComp.PlayOneShot(InteractSound);
+
+            if(PlaySoundOnce)
+            {
+                HadPlayedSound = true;
+            }
+        }
+        
     }
 
     public virtual void ShowError()

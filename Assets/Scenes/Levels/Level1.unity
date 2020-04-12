@@ -30363,22 +30363,22 @@ MonoBehaviour:
   ErrorsToCorrect:
   - ErrorName: 'Erreur : Image manquante'
     Error: 0
-    FileName: Peintures/tableau_04.jpg
+    FileName: Peintures/tableau04.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
     Error: 0
-    FileName: Peintures/tableau_03.jpg
+    FileName: Peintures/tableau03.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
     Error: 0
-    FileName: Peintures/tableau_02.jpg
+    FileName: Peintures/tableau02.jpg
     FileContent: 
     FileExtension: 
   - ErrorName: 'Erreur : Image manquante'
     Error: 0
-    FileName: Peintures/tableau_01.jpg
+    FileName: Peintures/tableau01.jpg
     FileContent: 
     FileExtension: 
   IndicationSound: {fileID: 8300000, guid: d208f96e60e71904ab33461b8f06379d, type: 3}

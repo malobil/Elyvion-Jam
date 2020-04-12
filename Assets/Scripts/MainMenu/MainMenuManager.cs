@@ -30,4 +30,9 @@ public class MainMenuManager : MonoBehaviour
             UIManager.Singleton.ShowErrorText(GetComponent<ExampleError>().LastError);
         }
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
